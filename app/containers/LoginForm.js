@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Card, CardSection, Input } from '../components';
-import * as actions from '../actions';
+import * as actions from '../actions'; // Imports ALL actions
 
 class LoginForm extends Component {
   onEmailChange = text => {
@@ -11,6 +11,18 @@ class LoginForm extends Component {
 
   onPasswordChange = text => {
     this.props.passwordChanged(text);
+  };
+
+  loginUserPressed = () => {
+    const { email, password } = this.props;
+
+    this.props.loginUser({ email, password }); // loginUser expects an object with email and password, although could have just as easily done it without an object
+  };
+
+  signupUserPressed = () => {
+    const { email, password } = this.props;
+
+    this.props.signupUser({ email, password });
   };
 
   render() {
@@ -25,7 +37,7 @@ class LoginForm extends Component {
               onChangeText={this.onEmailChange}
             />
           </CardSection>
-          {/*<Text>{this.props.email}</Text>*/}
+          <Text>{this.props.email}</Text>
           <CardSection>
             <Input
               value={this.props.password}
@@ -35,13 +47,13 @@ class LoginForm extends Component {
               onChangeText={this.onPasswordChange}
             />
           </CardSection>
-          {/*<Text>{this.props.password}</Text>*/}
+          <Text>{this.props.password}</Text>
           <CardSection>
-            <Button>Login</Button>
+            <Button onPress={this.loginUserPressed}>Login</Button>
           </CardSection>
 
           <CardSection>
-            <Button>Sign Up</Button>
+            <Button onPress={this.signupUserPressed}>Sign Up</Button>
           </CardSection>
         </KeyboardAvoidingView>
       </Card>
