@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
-import { Button, Card, CardSection, Input } from '../components';
+import { Button, Card, CardSection, Input, Spinner } from '../components';
 import * as actions from '../actions'; // Imports ALL actions
 
 class LoginForm extends Component {
@@ -37,7 +37,7 @@ class LoginForm extends Component {
               onChangeText={this.onEmailChange}
             />
           </CardSection>
-          <Text>{this.props.email}</Text>
+
           <CardSection>
             <Input
               value={this.props.password}
@@ -47,9 +47,14 @@ class LoginForm extends Component {
               onChangeText={this.onPasswordChange}
             />
           </CardSection>
-          <Text>{this.props.password}</Text>
+
+          <Text style={styles.errorStyle}>{this.props.error}</Text>
+
           <CardSection>
-            <Button onPress={this.loginUserPressed}>Login</Button>
+            {!this.props.loginLoading && <Spinner size="small" />}
+            {this.props.loginLoading && (
+              <Button onPress={this.loginUserPressed}>Login</Button>
+            )}
           </CardSection>
 
           <CardSection>
@@ -72,7 +77,9 @@ const styles = {
 function mapStateToProps({ auth }) {
   return {
     email: auth.email,
-    password: auth.password
+    password: auth.password,
+    error: auth.error,
+    loginLoading: auth.loginLoading
   };
 }
 

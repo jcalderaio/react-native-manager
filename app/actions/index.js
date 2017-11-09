@@ -3,10 +3,12 @@ import firebase from 'firebase';
 import {
   EMAIL_CHANGED,
   PASSWORD_CHANGED,
-  SIGN_IN_LOADING,
-  SIGN_UP_LOADING,
+  LOGIN_LOADING,
   LOGIN_USER_SUCCESS,
-  SIGNUP_SUCCESS
+  LOGIN_USER_FAILED,
+  SIGNUP_LOADING,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILED
 } from './types';
 
 export function emailChanged(text) {
@@ -25,14 +27,14 @@ export function passwordChanged(text) {
 
 export function loginLoading(bool) {
   return {
-    type: SIGN_IN_LOADING,
+    type: LOGIN_LOADING,
     payload: bool
   };
 }
 
 export function signupLoading(bool) {
   return {
-    type: SIGN_UP_LOADING,
+    type: SIGNUP_LOADING,
     payload: bool
   };
 }
@@ -41,10 +43,12 @@ export function signupLoading(bool) {
 export function loginUser({ email, password }) {
   // expects an object with email and password (but could just as easily do (email, password))
   return dispatch => {
+    dispatch({ type: LOGIN_LOADING, payload: true });
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(user => dispatch({ type: LOGIN_USER_SUCCESS, payload: user }));
+      .then(user => dispatch({ type: LOGIN_USER_SUCCESS, payload: user }))
+      .catch(error => dispatch({ type: LOGIN_USER_FAILED, payload: error }));
   };
 }
 
@@ -53,6 +57,7 @@ export function signupUser({ email, password }) {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(user => dispatch({ type: SIGNUP_SUCCESS, payload: user }));
+      .then(user => dispatch({ type: SIGNUP_SUCCESS, payload: user }))
+      .catch(error => dispatch({ type: SIGNUP_FAILED, payload: error }));
   };
 }
