@@ -5,14 +5,7 @@ Jitsi Meet can also be built as a standalone app for Android or iOS. It uses the
 
 ##First make sure the [React Native dependencies] are installed.
 
-1. Install Watchman
-We recommend installing Watchman using Homebrew:
-
-```bash
-brew install watchman
-```
-
-2. Node (make sure to do this step BEFORE running 'npm install'. If your machine's node version is different than we recommend, you may get errors)
+## Install nvm and Node (make sure to do this step BEFORE running 'npm install'. If your machine's node version is different than we recommend, you may get errors)
 
   We recommend you use nvm. With it, you can easily manage different node versions on the same machine.
 
