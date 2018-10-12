@@ -65,7 +65,7 @@ Jitsi Meet can also be built as a standalone app for Android or iOS. It uses the
 
 ## 4) iOS
 
-1. Install some extra dependencies
+A. Install some extra dependencies
 
   - Install ios-deploy globally (in case you want to use the React Native CLI
     to deploy the app to the device)
@@ -91,7 +91,7 @@ Jitsi Meet can also be built as a standalone app for Android or iOS. It uses the
     cd ..
     ```
 
-2. Build the app
+B. Build the app
 
     There are 2 ways to build the app: using the CLI or using Xcode.
 
@@ -119,7 +119,7 @@ Jitsi Meet can also be built as a standalone app for Android or iOS. It uses the
     logs the application creates.
 
 
-3. Other remarks
+C. Other remarks
 
     It's likely you'll need to change the bundle ID for deploying to a device
     because the default bundle ID points to the application signed by Atlassian.
