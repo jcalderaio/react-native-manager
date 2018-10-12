@@ -3,12 +3,43 @@
 Jitsi Meet can also be built as a standalone app for Android or iOS. It uses the
 [React Native] framework.
 
-First make sure the [React Native dependencies] are installed.
+##First make sure the [React Native dependencies] are installed.
+
+1. Install Watchman
+We recommend installing Watchman using Homebrew:
+
+```bash
+brew install watchman
+```
+
+2. Node (make sure to do this step BEFORE running 'npm install'. If your machine's node version is different than we recommend, you may get errors)
+
+  We recommend you use nvm. With it, you can easily manage different node versions on the same machine.
+
+  A .nvmrc file is included in this project's root directory. We will make it so that upon changing into this project's root directory, your machine will automatically switch to Node version 6.14.2
+
+  -To install nvm, you can use the install script using cURL:
+
+  ```bash
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+  ```
+
+  -Use nvm to install Node. With this script, all packages of your current node version will be copied to 
+  
+  ```
+  nvm install 6.14.2
+  ```
+
+  -OR, if you want to install a new version of Node.js and migrate npm packages from a previous version:
+
+  ```
+  nvm install 6.14.2 --reinstall-packages-from=${OLD_NODE_VERSION}
+  ```
+
+
 
 
 **NOTE**: This document assumes the app is being built on a macOS system.
-
-**NOTE**: Node 6.X and npm 3.X are recommended for building.
 
 
 ## iOS
