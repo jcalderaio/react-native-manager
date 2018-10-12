@@ -3,9 +3,11 @@
 Jitsi Meet can also be built as a standalone app for Android or iOS. It uses the
 [React Native] framework.
 
-##First make sure the [React Native dependencies] are installed.
+**NOTE**: This document assumes the app is being built on a macOS system.
 
-## Install nvm and Node (make sure to do this step BEFORE running 'npm install'. If your machine's node version is different than we recommend, you may get errors)
+## 1) First make sure the [React Native dependencies] are installed.
+
+## 2) Install nvm and Node (make sure to do this step BEFORE running 'npm install'. If your machine's node version is different than we recommend, you may get errors)
 
   We recommend you use nvm. With it, you can easily manage different node versions on the same machine.
 
@@ -27,7 +29,7 @@ Jitsi Meet can also be built as a standalone app for Android or iOS. It uses the
   $ nvm install 6.14.2 --reinstall-packages-from=${OLD_NODE_VERSION}
   ```
 
-## .nvmrc
+## 3) .nvmrc
 
  A .nvmrc file is included in this project's root directory. We will make it so that upon changing into this project's root directory, your machine will automatically switch to Node version 6.14.2
 
@@ -61,11 +63,7 @@ Jitsi Meet can also be built as a standalone app for Android or iOS. It uses the
   If not, delete the code from ~/.bash_profile, and try ~/.bashrc or ~/.zshrc
 
 
-
-**NOTE**: This document assumes the app is being built on a macOS system.
-
-
-## iOS
+## 4) iOS
 
 1. Install some extra dependencies
 
